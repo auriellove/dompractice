@@ -28,9 +28,31 @@ function submitPostHandler(event) {
   postForm.classList.add("hidden");
   postForm.classList.remove("show");
 
-  console.log(postFormAuthorValue);
-  console.log(postFormTitleValue);
-  console.log(postFormContentValue);
-
+  // console.log(postFormAuthorValue);
+  // console.log(postFormTitleValue);
+  // console.log(postFormContentValue);
+  addPost(postFormTitleValue, postFormAuthorValue, postFormContentValue);
   postForm.reset();
+}
+
+function addPost(
+  postFormTitleValue,
+  postFormAuthorValue,
+  postFormContentValue
+) {
+  let makeAPostList = document.createElement("li");
+  let postList = document.getElementById("post-list");
+  const postH1 = document.createElement("h1");
+  const postH3 = document.createElement("h3");
+  const postP = document.createElement("p");
+
+  postH1.innerText = postFormTitleValue;
+  postH3.innerText = postFormAuthorValue;
+  postP.innerText = postFormContentValue;
+
+  makeAPostList.appendChild(postH1);
+  makeAPostList.appendChild(postH3);
+  makeAPostList.appendChild(postP);
+
+  postList.appendChild(makeAPostList);
 }
